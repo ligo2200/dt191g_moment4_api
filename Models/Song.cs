@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace moment4_api.Models;
 
@@ -9,5 +10,8 @@ public class Song {
     [Required]
     public string? SongTitle { get; set; }
     public int? Length { get; set; }
-    public string? Category { get; set; }
+
+    [ForeignKey("Category")]
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
 } 

@@ -19,6 +19,21 @@ namespace moment4_api.Migrations
                 .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("moment4_api.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("moment4_api.Models.Song", b =>
                 {
                     b.Property<int>("SongId")
@@ -29,8 +44,8 @@ namespace moment4_api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("longtext");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("Length")
                         .HasColumnType("int");
@@ -41,7 +56,20 @@ namespace moment4_api.Migrations
 
                     b.HasKey("SongId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Songs");
+                });
+
+            modelBuilder.Entity("moment4_api.Models.Song", b =>
+                {
+                    b.HasOne("moment4_api.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

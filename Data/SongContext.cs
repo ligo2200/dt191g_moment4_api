@@ -1,5 +1,6 @@
 using moment4_api.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace moment4_api.Data;
 
@@ -10,5 +11,15 @@ public class SongContext : DbContext
 
     }
 
-    public DbSet<Song> Songs { get; set; } = null!;
+    public DbSet<Song> Songs { get; set; } 
+    public DbSet<Category> Categories { get; set; } 
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Song>()
+                .HasOne(s => s.Category)
+                .WithMany()
+                .HasForeignKey(s => s.CategoryId)
+                .IsRequired();
+        }
 }
