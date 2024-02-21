@@ -1,7 +1,7 @@
-using moment4_api.Models;
+using Moment4_api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace moment4_api.Data;
+namespace Moment4_api.Data;
 
 public class SongContext : DbContext
 {
@@ -10,5 +10,5 @@ public class SongContext : DbContext
 
     }
 
-    public DbSet<Song> Songs { get; set; } 
+    public DbSet<Song> Songs { get; set; } = null!;
 }

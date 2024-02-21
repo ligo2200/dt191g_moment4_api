@@ -252,3 +252,4 @@ C:\Linda\webbutveckling\år2\DT191G_webbutveckling_med_dotnet\moment4\moment4_ap
 C:\Linda\webbutveckling\år2\DT191G_webbutveckling_med_dotnet\moment4\moment4_api\obj\Debug\net8.0\moment4_api.pdb
 C:\Linda\webbutveckling\år2\DT191G_webbutveckling_med_dotnet\moment4\moment4_api\obj\Debug\net8.0\moment4_api.genruntimeconfig.cache
 C:\Linda\webbutveckling\år2\DT191G_webbutveckling_med_dotnet\moment4\moment4_api\obj\Debug\net8.0\ref\moment4_api.dll
+C:\Linda\webbutveckling\år2\DT191G_webbutveckling_med_dotnet\moment4\moment4_api\obj\Debug\net8.0\moment4_api.sourcelink.json
