@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("moment4_api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45d399d7da4d035ec764d6a4d066138065d34180")]
 [assembly: System.Reflection.AssemblyProductAttribute("moment4_api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("moment4_api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
