@@ -10,8 +10,8 @@ public class Song {
     [Required]
     public string? SongTitle { get; set; }
     public int? Length { get; set; }
-
-    [ForeignKey("Category")]
     public int CategoryId { get; set; }
-    public Category Category { get; set; }
+
+    
+    public Category? Category { get; set; }
 } 

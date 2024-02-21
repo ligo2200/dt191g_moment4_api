@@ -11,8 +11,8 @@ using moment4_api.Data;
 namespace moment4_api.Migrations
 {
     [DbContext(typeof(SongContext))]
-    [Migration("20240221114807_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240221172511_UpdateCategoryModel")]
+    partial class UpdateCategoryModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,6 @@ namespace moment4_api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CategoryName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("CategoryId");

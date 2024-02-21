@@ -25,14 +25,15 @@ namespace moment4_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Song>>> GetSongs()
         {
-            return await _context.Songs.ToListAsync();
+            var songs = await _context.Songs.Include(s => s.Category).ToListAsync();
+            return songs;
         }
 
         // GET: api/Songs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Song>> GetSong(int id)
         {
-            var song = await _context.Songs.FindAsync(id);
+            var song = await _context.Songs.Include(s => s.Category).FirstOrDefaultAsync(s => s.SongId == id);
 
             if (song == null)
             {
@@ -79,6 +80,16 @@ namespace moment4_api.Controllers
         public async Task<ActionResult<Song>> PostSong(Song song)
         {
             _context.Songs.Add(song);
+
+            // Manually load the category
+            var category = await _context.Categories.FindAsync(song.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Invalid category ID");
+            }
+
+            song.Category = category; // Assign the category to the song
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSong", new { id = song.SongId }, song);

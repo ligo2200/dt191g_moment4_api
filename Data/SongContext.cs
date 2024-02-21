@@ -17,9 +17,9 @@ public class SongContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Song>()
-                .HasOne(s => s.Category)
+                .HasOne(song => song.Category)
                 .WithMany()
-                .HasForeignKey(s => s.CategoryId)
+                .HasForeignKey(song => song.CategoryId)
                 .IsRequired();
         }
 }

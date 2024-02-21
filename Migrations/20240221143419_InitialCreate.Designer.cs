@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using moment4_api.Data;
 
@@ -10,9 +11,11 @@ using moment4_api.Data;
 namespace moment4_api.Migrations
 {
     [DbContext(typeof(SongContext))]
-    partial class SongContextModelSnapshot : ModelSnapshot
+    [Migration("20240221143419_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +29,7 @@ namespace moment4_api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("CategoryId");
@@ -63,12 +67,17 @@ namespace moment4_api.Migrations
             modelBuilder.Entity("moment4_api.Models.Song", b =>
                 {
                     b.HasOne("moment4_api.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Songs")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("moment4_api.Models.Category", b =>
+                {
+                    b.Navigation("Songs");
                 });
 #pragma warning restore 612, 618
         }
