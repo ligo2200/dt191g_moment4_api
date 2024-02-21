@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Moment4_api.Models;
+namespace moment4_api.Models;
 
 public class Song {
     public int SongId { get; set; }
